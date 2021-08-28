@@ -300,7 +300,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA0-Mk-3Ik">
-                                <rect key="frame" x="163" y="87" width="61" height="50"/>
+                                <rect key="frame" x="163" y="86.5" width="61" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -341,6 +341,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gV-Qf-Zam">
+                                <rect key="frame" x="171" y="482" width="49" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Apply"/>
+                                <connections>
+                                    <action selector="applyClicked:" destination="1tB-1s-MMl" eventType="touchUpInside" id="Sa1-y8-lGA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wRe-Z0-lZR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -367,6 +375,7 @@
                             <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="nxv-d8-kg6" secondAttribute="trailing" constant="251" id="QWK-JR-6zF"/>
                             <constraint firstItem="uEV-xX-BWQ" firstAttribute="top" secondItem="zPd-Jo-W0t" secondAttribute="bottom" id="Qer-XM-4dG"/>
                             <constraint firstItem="206-PY-UEt" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="RcE-eq-m4y"/>
+                            <constraint firstItem="8gV-Qf-Zam" firstAttribute="top" secondItem="nxv-d8-kg6" secondAttribute="bottom" constant="45.5" id="UhI-zi-rFe"/>
                             <constraint firstItem="HYo-mU-bmN" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="VcH-Jm-h19"/>
                             <constraint firstItem="fA0-Mk-3Ik" firstAttribute="top" secondItem="8dO-bj-gRr" secondAttribute="bottom" constant="30" id="WpM-6X-83S"/>
                             <constraint firstItem="nxv-d8-kg6" firstAttribute="top" secondItem="8dO-bj-gRr" secondAttribute="bottom" constant="30" id="f8u-Dc-OV3"/>

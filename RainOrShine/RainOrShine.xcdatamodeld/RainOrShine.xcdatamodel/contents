@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ScheduledDaysCD" representedClassName="ScheduledDaysCD" syncable="YES" codeGenerationType="class">
+        <attribute name="fridayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mondayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="saturdayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sundayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="thursdayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="tuesdayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="wednesdayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="ScheduledDaysCD" positionX="-63" positionY="-18" width="128" height="134"/>
+    </elements>
 </model>

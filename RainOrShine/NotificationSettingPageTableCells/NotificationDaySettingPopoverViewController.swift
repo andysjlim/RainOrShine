@@ -18,13 +18,26 @@ class NotificationDaySettingPopoverViewController: UIViewController {
     @IBOutlet var saturday: CheckBox!
     @IBOutlet var sunday: CheckBox!
     
+    var scheduledDayCD = [ScheduledDaysCD]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        {
+            if let savedSchedulesFromCoreData = try? context.fetch(ScheduledDaysCD.fetchRequest()){
+                if let scheduledDays = savedSchedulesFromCoreData as? [ScheduledDaysCD] {
+                    scheduledDayCD = scheduledDays
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func applyClicked(_ sender: UIButton) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
