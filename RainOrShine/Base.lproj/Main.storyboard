@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vny-lL-uUh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Qih-Qc-Nwv">
+            <objects>
+                <tableViewController storyboardIdentifier="mainViewController" id="GRN-8v-tey" customClass="ViewController" customModule="RainOrShine" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="O5m-b6-bVj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="notificationSettingViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="notificationSettingViewCell" rowHeight="80" id="JNV-F3-vAo" customClass="NotificationSettingViewCell" customModule="RainOrShine" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JNV-F3-vAo" id="eaX-iA-9ce">
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="weatherSettingViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="weatherSettingViewCell" rowHeight="80" id="knG-bU-uWB" customClass="WeatherSettingViewCell" customModule="RainOrShine" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="knG-bU-uWB" id="RVF-gx-ga3">
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="locationSettingViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="locationSettingViewCell" rowHeight="80" id="vgi-gh-Gbs" customClass="LocationSettingViewCell" customModule="RainOrShine" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="184.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vgi-gh-Gbs" id="32b-i2-0ou">
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GRN-8v-tey" id="IX3-rY-AZM"/>
+                            <outlet property="delegate" destination="GRN-8v-tey" id="60Y-ec-CyC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="RuC-rF-XHE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MN0-jO-iML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-284" y="3"/>
+        </scene>
+        <!--Weather Settings Table View Controller-->
+        <scene sceneID="X5h-e8-VED">
+            <objects>
+                <tableViewController storyboardIdentifier="WeatherSettingsTableViewController" id="DAl-9e-ava" customClass="WeatherSettingsTableViewController" customModule="RainOrShine" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xap-P9-djL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="DAl-9e-ava" id="F1L-AN-pJP"/>
+                            <outlet property="delegate" destination="DAl-9e-ava" id="gSR-6z-nMp"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7A-RR-58N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="-430"/>
+        </scene>
+        <!--Notification Settings Table View Controller-->
+        <scene sceneID="s08-yw-eZ1">
+            <objects>
+                <tableViewController storyboardIdentifier="NotificationSettingsTableViewController" id="tes-7Q-0NU" customClass="NotificationSettingsTableViewController" customModule="RainOrShine" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zEN-EX-Bhj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="timeToSendNotificationViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="notificationTimeSetting" rowHeight="80" id="4jN-Sh-Uvo" customClass="NotificationTableViewTimeCell" customModule="RainOrShine" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4jN-Sh-Uvo" id="MHw-rd-PBB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏱ Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNj-rB-vgb">
+                                            <rect key="frame" x="20" y="29.5" width="374" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" id="agP-Wl-wIG">
+                                            <rect key="frame" x="261" y="14" width="133" height="51"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="650088000.30823004">
+                                                <!--2021-08-08 04:00:00 +0000-->
+                                            </date>
+                                            <connections>
+                                                <action selector="timeValueChanged:" destination="4jN-Sh-Uvo" eventType="valueChanged" id="IR7-ux-L0O"/>
+                                            </connections>
+                                        </datePicker>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cNj-rB-vgb" firstAttribute="trailing" secondItem="agP-Wl-wIG" secondAttribute="trailing" id="6Wg-bI-9ax"/>
+                                        <constraint firstItem="agP-Wl-wIG" firstAttribute="leading" secondItem="cNj-rB-vgb" secondAttribute="trailing" constant="-138" id="XPF-E8-kgk"/>
+                                        <constraint firstItem="cNj-rB-vgb" firstAttribute="centerY" secondItem="MHw-rd-PBB" secondAttribute="centerY" id="c7G-wn-E1g"/>
+                                        <constraint firstItem="cNj-rB-vgb" firstAttribute="leading" secondItem="MHw-rd-PBB" secondAttribute="leading" constant="20" symbolic="YES" id="dau-Xt-ECi"/>
+                                        <constraint firstItem="agP-Wl-wIG" firstAttribute="centerY" secondItem="cNj-rB-vgb" secondAttribute="centerY" id="pGa-Ju-KTY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textLabel" destination="cNj-rB-vgb" id="QPO-lh-IW4"/>
+                                    <outlet property="timePicker" destination="agP-Wl-wIG" id="yb1-FL-AUd"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="scheduledDayToSendNotificationViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="notificationDaySetting" rowHeight="80" id="6p2-uQ-TRZ" customClass="NotificationTableViewDayCell" customModule="RainOrShine" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6p2-uQ-TRZ" id="kKx-wf-Vlt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="1tB-1s-MMl" kind="presentation" id="oS4-NO-nIn"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="timeFrameToSendNotificationViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="notificationTimeFrameSetting" rowHeight="80" id="xQT-1I-z9m" customClass="NotificationTableViewTimeFrameCell" customModule="RainOrShine" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="184.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xQT-1I-z9m" id="sfO-Z8-wJd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tes-7Q-0NU" id="aMT-d2-LIQ"/>
+                            <outlet property="delegate" destination="tes-7Q-0NU" id="Neu-Lw-KF2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmB-CV-sPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="449.27536231884062" y="306.69642857142856"/>
+        </scene>
+        <!--Notification Day Setting Popover View Controller-->
+        <scene sceneID="PQx-42-jCr">
+            <objects>
+                <viewController id="1tB-1s-MMl" customClass="NotificationDaySettingPopoverViewController" customModule="RainOrShine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ocp-av-lUk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days to Notify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dO-bj-gRr">
+                                <rect key="frame" x="140" y="30" width="134.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nxv-d8-kg6">
+                                <rect key="frame" x="113" y="86.5" width="50" height="350"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSp-nS-oTI" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXG-E7-Yk0" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nok-r9-cvE" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyW-F7-vvA" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xA1-u3-uuH" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="200" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiG-2X-KgZ" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="250" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HV8-An-hbl" customClass="CheckBox" customModule="RainOrShine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="300" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="uncheckedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkedBorderColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="checkmarkColor">
+                                                <color key="value" systemColor="linkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="VyW-F7-vvA" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="height" multiplier="1:1" id="3zG-aF-Kge"/>
+                                    <constraint firstItem="HV8-An-hbl" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="4KQ-h5-KSK"/>
+                                    <constraint firstItem="VyW-F7-vvA" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="width" id="6DT-za-Pm5"/>
+                                    <constraint firstItem="xiG-2X-KgZ" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="7EH-on-M6q"/>
+                                    <constraint firstItem="xiG-2X-KgZ" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="height" multiplier="1:1" id="9go-DP-NtO"/>
+                                    <constraint firstItem="VyW-F7-vvA" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="JQ2-0u-Ai9"/>
+                                    <constraint firstItem="rXG-E7-Yk0" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="width" id="P9A-hc-hvI"/>
+                                    <constraint firstItem="HV8-An-hbl" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="height" multiplier="1:1" id="PSJ-kn-6vW"/>
+                                    <constraint firstItem="xA1-u3-uuH" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="width" id="Rjh-FN-Uh8"/>
+                                    <constraint firstItem="HV8-An-hbl" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="width" id="XCs-VD-zHB"/>
+                                    <constraint firstItem="xiG-2X-KgZ" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="width" id="aak-Bd-gyy"/>
+                                    <constraint firstItem="nok-r9-cvE" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="hVP-kW-NiV"/>
+                                    <constraint firstItem="rXG-E7-Yk0" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="height" multiplier="1:1" id="hnz-WW-Gep"/>
+                                    <constraint firstItem="xA1-u3-uuH" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="p7t-Zh-MCp"/>
+                                    <constraint firstItem="nok-r9-cvE" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="height" multiplier="1:1" id="pvn-cC-ieS"/>
+                                    <constraint firstItem="nok-r9-cvE" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="width" id="tWE-Sb-xay"/>
+                                    <constraint firstItem="rXG-E7-Yk0" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="td2-1a-sQ3"/>
+                                    <constraint firstItem="xA1-u3-uuH" firstAttribute="width" secondItem="MSp-nS-oTI" secondAttribute="height" multiplier="1:1" id="wgx-qc-9rY"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA0-Mk-3Ik">
+                                <rect key="frame" x="163" y="87" width="61" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="206-PY-UEt">
+                                <rect key="frame" x="163" y="136.5" width="64" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpt-P1-75p">
+                                <rect key="frame" x="163" y="236.5" width="71.5" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPd-Jo-W0t">
+                                <rect key="frame" x="163" y="286.5" width="47" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-xX-BWQ">
+                                <rect key="frame" x="163" y="336.5" width="68" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-mU-bmN">
+                                <rect key="frame" x="163" y="386.5" width="57" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c93-3l-pnA">
+                                <rect key="frame" x="163" y="186.5" width="89.5" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wRe-Z0-lZR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uEV-xX-BWQ" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="03J-5R-hQj"/>
+                            <constraint firstItem="8dO-bj-gRr" firstAttribute="centerX" secondItem="wRe-Z0-lZR" secondAttribute="centerX" id="04I-Ug-nzZ"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="zPd-Jo-W0t" secondAttribute="trailing" constant="204" id="0lZ-2Y-PDl"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="206-PY-UEt" secondAttribute="trailing" constant="187" id="1VP-jJ-4Vo"/>
+                            <constraint firstItem="8dO-bj-gRr" firstAttribute="top" secondItem="wRe-Z0-lZR" secondAttribute="top" constant="30" id="2pd-Kg-KM1"/>
+                            <constraint firstItem="zPd-Jo-W0t" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="3Xx-zn-kVS"/>
+                            <constraint firstItem="206-PY-UEt" firstAttribute="top" secondItem="fA0-Mk-3Ik" secondAttribute="bottom" id="5lS-oF-7Sb"/>
+                            <constraint firstItem="fpt-P1-75p" firstAttribute="height" secondItem="VyW-F7-vvA" secondAttribute="height" id="6uc-5A-8zC"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="HYo-mU-bmN" secondAttribute="trailing" constant="194" id="72W-Tm-FkX"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="uEV-xX-BWQ" secondAttribute="trailing" constant="183" id="8Nx-gD-a7U"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="fA0-Mk-3Ik" secondAttribute="trailing" constant="190" id="Aor-G9-R3L"/>
+                            <constraint firstItem="HYo-mU-bmN" firstAttribute="top" secondItem="uEV-xX-BWQ" secondAttribute="bottom" id="CNM-SO-inj"/>
+                            <constraint firstItem="fpt-P1-75p" firstAttribute="top" secondItem="c93-3l-pnA" secondAttribute="bottom" id="E5k-UY-3qv"/>
+                            <constraint firstItem="fA0-Mk-3Ik" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="ERX-lR-tTq"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="c93-3l-pnA" secondAttribute="trailing" constant="161.5" id="HAW-ZV-1Sx"/>
+                            <constraint firstItem="fpt-P1-75p" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="IMr-5s-dTQ"/>
+                            <constraint firstItem="206-PY-UEt" firstAttribute="height" secondItem="rXG-E7-Yk0" secondAttribute="height" id="KZX-2b-RoS"/>
+                            <constraint firstItem="c93-3l-pnA" firstAttribute="top" secondItem="206-PY-UEt" secondAttribute="bottom" id="Kca-aZ-tpe"/>
+                            <constraint firstItem="zPd-Jo-W0t" firstAttribute="top" secondItem="fpt-P1-75p" secondAttribute="bottom" id="PhJ-eY-PBN"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="nxv-d8-kg6" secondAttribute="trailing" constant="251" id="QWK-JR-6zF"/>
+                            <constraint firstItem="uEV-xX-BWQ" firstAttribute="top" secondItem="zPd-Jo-W0t" secondAttribute="bottom" id="Qer-XM-4dG"/>
+                            <constraint firstItem="206-PY-UEt" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="RcE-eq-m4y"/>
+                            <constraint firstItem="HYo-mU-bmN" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="VcH-Jm-h19"/>
+                            <constraint firstItem="fA0-Mk-3Ik" firstAttribute="top" secondItem="8dO-bj-gRr" secondAttribute="bottom" constant="30" id="WpM-6X-83S"/>
+                            <constraint firstItem="nxv-d8-kg6" firstAttribute="top" secondItem="8dO-bj-gRr" secondAttribute="bottom" constant="30" id="f8u-Dc-OV3"/>
+                            <constraint firstItem="c93-3l-pnA" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="j4f-TE-e8Z"/>
+                            <constraint firstItem="HYo-mU-bmN" firstAttribute="height" secondItem="HV8-An-hbl" secondAttribute="height" id="l4G-ng-GTl"/>
+                            <constraint firstItem="c93-3l-pnA" firstAttribute="height" secondItem="nok-r9-cvE" secondAttribute="height" id="oz1-Fv-YcU"/>
+                            <constraint firstItem="uEV-xX-BWQ" firstAttribute="height" secondItem="xiG-2X-KgZ" secondAttribute="height" id="qY3-xn-uWe"/>
+                            <constraint firstItem="zPd-Jo-W0t" firstAttribute="height" secondItem="xA1-u3-uuH" secondAttribute="height" id="sve-xz-TxH"/>
+                            <constraint firstItem="fA0-Mk-3Ik" firstAttribute="height" secondItem="MSp-nS-oTI" secondAttribute="height" id="vfM-6R-i3l"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="fpt-P1-75p" secondAttribute="trailing" constant="179.5" id="x5z-IW-YEu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="friday" destination="xA1-u3-uuH" id="aKj-7f-PZt"/>
+                        <outlet property="monday" destination="MSp-nS-oTI" id="8oa-ZW-n93"/>
+                        <outlet property="saturday" destination="xiG-2X-KgZ" id="w7m-rd-DVF"/>
+                        <outlet property="sunday" destination="HV8-An-hbl" id="oYI-0J-jZ9"/>
+                        <outlet property="thursday" destination="VyW-F7-vvA" id="ycW-Dy-wLw"/>
+                        <outlet property="tuesday" destination="rXG-E7-Yk0" id="Lcb-gw-Xml"/>
+                        <outlet property="wednesday" destination="nok-r9-cvE" id="D5B-GR-PIo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dhd-5f-Nit" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="447.82608695652175" y="1078.7946428571429"/>
+        </scene>
+        <!--Location Settings Table View Controller-->
+        <scene sceneID="3yF-EY-pYw">
+            <objects>
+                <tableViewController storyboardIdentifier="LocationSettingsTableViewController" id="GeM-HC-S9P" customClass="LocationSettingsTableViewController" customModule="RainOrShine" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cyU-PN-WTd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userLocationViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationSettingUserLocation" rowHeight="80" id="vJF-Na-QJf">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJF-Na-QJf" id="eeU-t9-Ohz">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="chosenLocationViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationSettingChosenLocation" rowHeight="80" id="xMC-ax-Bh5">
+                                <rect key="frame" x="0.0" y="104.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xMC-ax-Bh5" id="hJ2-rh-G5e">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GeM-HC-S9P" id="hEu-Vx-3aT"/>
+                            <outlet property="delegate" destination="GeM-HC-S9P" id="auX-vZ-gGM"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91x-3l-sAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1142" y="-11"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Lga-Nx-2in">
+            <objects>
+                <navigationController id="vny-lL-uUh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hGJ-HY-KrF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GRN-8v-tey" kind="relationship" relationship="rootViewController" id="mPh-ez-bEJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ijw-El-vQh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1254" y="3"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
