@@ -341,8 +341,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gV-Qf-Zam">
-                                <rect key="frame" x="171" y="482" width="49" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gV-Qf-Zam">
+                                <rect key="frame" x="100" y="482" width="214" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Apply"/>
                                 <connections>
@@ -378,7 +378,9 @@
                             <constraint firstItem="8gV-Qf-Zam" firstAttribute="top" secondItem="nxv-d8-kg6" secondAttribute="bottom" constant="45.5" id="UhI-zi-rFe"/>
                             <constraint firstItem="HYo-mU-bmN" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="VcH-Jm-h19"/>
                             <constraint firstItem="fA0-Mk-3Ik" firstAttribute="top" secondItem="8dO-bj-gRr" secondAttribute="bottom" constant="30" id="WpM-6X-83S"/>
+                            <constraint firstItem="8gV-Qf-Zam" firstAttribute="leading" secondItem="wRe-Z0-lZR" secondAttribute="leading" constant="100" id="eNQ-Kh-HZb"/>
                             <constraint firstItem="nxv-d8-kg6" firstAttribute="top" secondItem="8dO-bj-gRr" secondAttribute="bottom" constant="30" id="f8u-Dc-OV3"/>
+                            <constraint firstItem="wRe-Z0-lZR" firstAttribute="trailing" secondItem="8gV-Qf-Zam" secondAttribute="trailing" constant="100" id="fMH-fH-XbS"/>
                             <constraint firstItem="c93-3l-pnA" firstAttribute="leading" secondItem="nxv-d8-kg6" secondAttribute="trailing" id="j4f-TE-e8Z"/>
                             <constraint firstItem="HYo-mU-bmN" firstAttribute="height" secondItem="HV8-An-hbl" secondAttribute="height" id="l4G-ng-GTl"/>
                             <constraint firstItem="c93-3l-pnA" firstAttribute="height" secondItem="nok-r9-cvE" secondAttribute="height" id="oz1-Fv-YcU"/>

@@ -18,7 +18,7 @@ class NotificationDaySettingPopoverViewController: UIViewController {
     @IBOutlet var saturday: CheckBox!
     @IBOutlet var sunday: CheckBox!
     
-    var scheduledDayCD = [ScheduledDaysCD]()
+    var scheduledDayCD : ScheduledDaysCD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +27,61 @@ class NotificationDaySettingPopoverViewController: UIViewController {
         {
             if let savedSchedulesFromCoreData = try? context.fetch(ScheduledDaysCD.fetchRequest()){
                 if let scheduledDays = savedSchedulesFromCoreData as? [ScheduledDaysCD] {
-                    scheduledDayCD = scheduledDays
+                    if scheduledDays.count != 0 {
+                        scheduledDayCD = scheduledDays[0]
+                    }
                 }
             }
         }
+        
+        if let nonNullScheduledDayCD = scheduledDayCD as ScheduledDaysCD? {
+            monday.isChecked = nonNullScheduledDayCD.mondayEnabled
+            tuesday.isChecked = nonNullScheduledDayCD.tuesdayEnabled
+            wednesday.isChecked = nonNullScheduledDayCD.wednesdayEnabled
+            thursday.isChecked = nonNullScheduledDayCD.thursdayEnabled
+            friday.isChecked = nonNullScheduledDayCD.fridayEnabled
+            saturday.isChecked = nonNullScheduledDayCD.saturdayEnabled
+            sunday.isChecked = nonNullScheduledDayCD.sundayEnabled
+        }
+        else {
+            monday.isChecked = false
+            tuesday.isChecked = false
+            wednesday.isChecked = false
+            thursday.isChecked = false
+            friday.isChecked = false
+            saturday.isChecked = false
+            sunday.isChecked = false
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func applyClicked(_ sender: UIButton) {
-        
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        {
+            if let savedSchedulesFromCoreData = try? context.fetch(ScheduledDaysCD.fetchRequest()){
+                if let scheduledDays = savedSchedulesFromCoreData as? [ScheduledDaysCD] {
+                    let scheduledDaysCD : ScheduledDaysCD
+                    if scheduledDays.count != 0 {
+                        scheduledDaysCD = scheduledDays[0]
+                    }
+                    else {
+                        scheduledDaysCD = ScheduledDaysCD(context: context)
+                    }
+                    
+                    scheduledDaysCD.setValue(monday.isChecked, forKey: "mondayEnabled")
+                    scheduledDaysCD.setValue(tuesday.isChecked, forKey: "tuesdayEnabled")
+                    scheduledDaysCD.setValue(wednesday.isChecked, forKey: "wednesdayEnabled")
+                    scheduledDaysCD.setValue(thursday.isChecked, forKey: "thursdayEnabled")
+                    scheduledDaysCD.setValue(friday.isChecked, forKey: "fridayEnabled")
+                    scheduledDaysCD.setValue(saturday.isChecked, forKey: "saturdayEnabled")
+                    scheduledDaysCD.setValue(sunday.isChecked, forKey: "sundayEnabled")
+                    
+                    (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+                }
+            }
+        }
     }
     
     /*
