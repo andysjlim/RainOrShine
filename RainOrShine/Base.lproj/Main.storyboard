@@ -101,7 +101,7 @@
                                                 <!--2021-08-08 04:00:00 +0000-->
                                             </date>
                                             <connections>
-                                                <action selector="timeValueChanged:" destination="4jN-Sh-Uvo" eventType="valueChanged" id="IR7-ux-L0O"/>
+                                                <action selector="timeValueFinishedChanging:" destination="4jN-Sh-Uvo" eventType="editingDidEnd" id="Fnn-Ec-QBU"/>
                                             </connections>
                                         </datePicker>
                                     </subviews>

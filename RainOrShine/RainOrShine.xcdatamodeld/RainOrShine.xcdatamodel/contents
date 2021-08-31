@@ -9,7 +9,12 @@
         <attribute name="tuesdayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="wednesdayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
+    <entity name="ScheduledTimeCD" representedClassName="ScheduledTimeCD" syncable="YES" codeGenerationType="class">
+        <attribute name="hour" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minutes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
         <element name="ScheduledDaysCD" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="ScheduledTimeCD" positionX="-63" positionY="36" width="128" height="59"/>
     </elements>
 </model>
