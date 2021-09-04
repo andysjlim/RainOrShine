@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct NetworkProperties {
+    static let API_KEY = "148a02576f136b1c70080aa0383887ed"
+}

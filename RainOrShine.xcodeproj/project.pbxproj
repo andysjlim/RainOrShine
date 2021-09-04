@@ -12,6 +12,10 @@
 		0202F33F26BB706B0062D0AE /* NotificationTableViewTimeFrameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202F33E26BB706B0062D0AE /* NotificationTableViewTimeFrameCell.swift */; };
 		0202F34426C860B40062D0AE /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202F34326C860B40062D0AE /* Checkbox.swift */; };
 		0202F34626C8669E0062D0AE /* NotificationDaySettingPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202F34526C8669E0062D0AE /* NotificationDaySettingPopoverViewController.swift */; };
+		0203D4C726DF08E40064C165 /* NetworkCallsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0203D4C626DF08E40064C165 /* NetworkCallsProtocol.swift */; };
+		0203D4C926DF095B0064C165 /* WeatherNetworkCallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0203D4C826DF095B0064C165 /* WeatherNetworkCallManager.swift */; };
+		0203D4CC26DF0A7C0064C165 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0203D4CB26DF0A7C0064C165 /* Weather.swift */; };
+		0203D4CE26DF0AE00064C165 /* NetworkProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0203D4CD26DF0AE00064C165 /* NetworkProperties.swift */; };
 		02406EDD25B65D9400BEC265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02406EDC25B65D9400BEC265 /* AppDelegate.swift */; };
 		02406EDF25B65D9400BEC265 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02406EDE25B65D9400BEC265 /* SceneDelegate.swift */; };
 		02406EE125B65D9400BEC265 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02406EE025B65D9400BEC265 /* ViewController.swift */; };
@@ -33,6 +37,10 @@
 		0202F33E26BB706B0062D0AE /* NotificationTableViewTimeFrameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewTimeFrameCell.swift; sourceTree = "<group>"; };
 		0202F34326C860B40062D0AE /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		0202F34526C8669E0062D0AE /* NotificationDaySettingPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDaySettingPopoverViewController.swift; sourceTree = "<group>"; };
+		0203D4C626DF08E40064C165 /* NetworkCallsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallsProtocol.swift; sourceTree = "<group>"; };
+		0203D4C826DF095B0064C165 /* WeatherNetworkCallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkCallManager.swift; sourceTree = "<group>"; };
+		0203D4CB26DF0A7C0064C165 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		0203D4CD26DF0AE00064C165 /* NetworkProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProperties.swift; sourceTree = "<group>"; };
 		02406ED925B65D9400BEC265 /* RainOrShine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainOrShine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02406EDC25B65D9400BEC265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02406EDE25B65D9400BEC265 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +91,24 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		0203D4C526DF08AC0064C165 /* NetworkCalls */ = {
+			isa = PBXGroup;
+			children = (
+				0203D4C626DF08E40064C165 /* NetworkCallsProtocol.swift */,
+				0203D4C826DF095B0064C165 /* WeatherNetworkCallManager.swift */,
+				0203D4CD26DF0AE00064C165 /* NetworkProperties.swift */,
+			);
+			path = NetworkCalls;
+			sourceTree = "<group>";
+		};
+		0203D4CA26DF0A4B0064C165 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0203D4CB26DF0A7C0064C165 /* Weather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0223B3FB25EC6EAF003DCCFB /* NotificationSettingPageTableCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +139,8 @@
 		02406EDB25B65D9400BEC265 /* RainOrShine */ = {
 			isa = PBXGroup;
 			children = (
+				0203D4CA26DF0A4B0064C165 /* Model */,
+				0203D4C526DF08AC0064C165 /* NetworkCalls */,
 				0202F34226C8608C0062D0AE /* Components */,
 				0202F34126BF3A240062D0AE /* LocationSettingPageTableCells */,
 				0202F34026BF39710062D0AE /* WeatherSettingPageTableCells */,
@@ -224,9 +252,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0203D4C726DF08E40064C165 /* NetworkCallsProtocol.swift in Sources */,
 				02A9959F25CCF60700F002B6 /* WeatherSettingViewCell.swift in Sources */,
 				02D4781725BA77F800A2ED8B /* NotificationSettingsTableViewController.swift in Sources */,
 				0202F34626C8669E0062D0AE /* NotificationDaySettingPopoverViewController.swift in Sources */,
+				0203D4CC26DF0A7C0064C165 /* Weather.swift in Sources */,
 				02D4781E25BA783700A2ED8B /* LocationSettingsTableViewController.swift in Sources */,
 				0202F33F26BB706B0062D0AE /* NotificationTableViewTimeFrameCell.swift in Sources */,
 				0202F34426C860B40062D0AE /* Checkbox.swift in Sources */,
@@ -238,6 +268,8 @@
 				02A995A225CCF6B000F002B6 /* NotificationSettingViewCell.swift in Sources */,
 				02A995A525CCF6D600F002B6 /* LocationSettingViewCell.swift in Sources */,
 				0202F33B26BB6FE30062D0AE /* NotificationTableViewTimeCell.swift in Sources */,
+				0203D4C926DF095B0064C165 /* WeatherNetworkCallManager.swift in Sources */,
+				0203D4CE26DF0AE00064C165 /* NetworkProperties.swift in Sources */,
 				02D4781B25BA780B00A2ED8B /* WeatherSettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -370,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
