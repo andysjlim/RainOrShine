@@ -23,6 +23,7 @@
 		02406EE725B65D9400BEC265 /* RainOrShine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02406EE525B65D9400BEC265 /* RainOrShine.xcdatamodeld */; };
 		02406EE925B65D9500BEC265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02406EE825B65D9500BEC265 /* Assets.xcassets */; };
 		02406EEC25B65D9500BEC265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02406EEA25B65D9500BEC265 /* LaunchScreen.storyboard */; };
+		0264C43C26EABAA500154AA6 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264C43B26EABAA500154AA6 /* HelperFunctions.swift */; };
 		02A9959F25CCF60700F002B6 /* WeatherSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9959E25CCF60700F002B6 /* WeatherSettingViewCell.swift */; };
 		02A995A225CCF6B000F002B6 /* NotificationSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A995A125CCF6B000F002B6 /* NotificationSettingViewCell.swift */; };
 		02A995A525CCF6D600F002B6 /* LocationSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A995A425CCF6D600F002B6 /* LocationSettingViewCell.swift */; };
@@ -50,6 +51,7 @@
 		02406EE825B65D9500BEC265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02406EEB25B65D9500BEC265 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02406EED25B65D9500BEC265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0264C43B26EABAA500154AA6 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		02A9959E25CCF60700F002B6 /* WeatherSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherSettingViewCell.swift; path = RainOrShine/MainPageTableCells/WeatherSettingViewCell.swift; sourceTree = SOURCE_ROOT; };
 		02A995A125CCF6B000F002B6 /* NotificationSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewCell.swift; sourceTree = "<group>"; };
 		02A995A425CCF6D600F002B6 /* LocationSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationSettingViewCell.swift; path = RainOrShine/MainPageTableCells/LocationSettingViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -139,6 +141,7 @@
 		02406EDB25B65D9400BEC265 /* RainOrShine */ = {
 			isa = PBXGroup;
 			children = (
+				0264C43A26EABA9600154AA6 /* Helper */,
 				0203D4CA26DF0A4B0064C165 /* Model */,
 				0203D4C526DF08AC0064C165 /* NetworkCalls */,
 				0202F34226C8608C0062D0AE /* Components */,
@@ -156,6 +159,14 @@
 				02406EE525B65D9400BEC265 /* RainOrShine.xcdatamodeld */,
 			);
 			path = RainOrShine;
+			sourceTree = "<group>";
+		};
+		0264C43A26EABA9600154AA6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0264C43B26EABAA500154AA6 /* HelperFunctions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		02A9959C25CCF5D700F002B6 /* MainPageTableCells */ = {
@@ -257,6 +268,7 @@
 				02D4781725BA77F800A2ED8B /* NotificationSettingsTableViewController.swift in Sources */,
 				0202F34626C8669E0062D0AE /* NotificationDaySettingPopoverViewController.swift in Sources */,
 				0203D4CC26DF0A7C0064C165 /* Weather.swift in Sources */,
+				0264C43C26EABAA500154AA6 /* HelperFunctions.swift in Sources */,
 				02D4781E25BA783700A2ED8B /* LocationSettingsTableViewController.swift in Sources */,
 				0202F33F26BB706B0062D0AE /* NotificationTableViewTimeFrameCell.swift in Sources */,
 				0202F34426C860B40062D0AE /* Checkbox.swift in Sources */,
