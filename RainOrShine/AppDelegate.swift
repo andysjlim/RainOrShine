@@ -8,16 +8,80 @@
 
 import UIKit
 import CoreData
+import UserNotifications
+import BackgroundTasks
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    let notificationCenter = UNUserNotificationCenter.current()
+    
+    func requestAuthForLocalNotifications() {
+        notificationCenter.delegate = self
+        let options : UNAuthorizationOptions = [.alert, .sound, .badge]
+        notificationCenter.requestAuthorization(options: options) { (didAllow, error) in
+            if !didAllow {
+                print("User has declined notification")
+            }
+            
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        self.requestAuthForLocalNotifications()
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.apiCall", using: nil) { task in
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
         return true
+    }
+    
+    func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.apiCall")
+        
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 60*60)
+        
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
+    }
+    
+    func handleAppRefresh(task: BGAppRefreshTask) {
+        scheduleAppRefresh()
+        
+        scheduleLocalNotification()
+        
+        task.expirationHandler = {
+            task.setTaskCompleted(success: false)
+        }
+    }
+    
+    func scheduleLocalNotification() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            if settings.authorizationStatus == UNAuthorizationStatus.authorized {
+                let content = UNMutableNotificationContent()
+                content.title = "It will rain!"
+                content.body = "Bring yo umbrella!"
+                content.sound = UNNotificationSound.default
+                
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+                
+                let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+                
+                let notificationCenter = UNUserNotificationCenter.current()
+                
+                notificationCenter.add(request) { (error) in
+                    if error != nil {
+                        print("Error in notification")
+                    }
+                }
+            }
+            else {
+                print("User hasn't allowed notificatino settings")
+            }
+        }
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
