@@ -10,6 +10,31 @@ import Foundation
 
 
 class WeatherNetworkManager : NetworkManagerProtocol {
+    static let shared = WeatherNetworkManager()
+    
+    var lat = "60.99"
+    var long = "30.0"
+    
+    func setLatitude(_ latitude: String)
+    {
+        lat = latitude
+    }
+    
+    func setLatitude(_ latitude: Double)
+    {
+        setLatitude(String(latitude))
+    }
+    
+    func setLongitude(_ longitude: String)
+    {
+        long = longitude
+    }
+    
+    func setLongitude(_ longitude: Double)
+    {
+        setLongitude(String(longitude))
+    }
+    
     
     func fetchNextFiveWeatherForecast(city: String, state: String, completion: @escaping ([ForecastTemperature]) -> ()) {
         let formattedCity = city.replacingOccurrences(of: " ", with: "+")
@@ -187,8 +212,8 @@ class WeatherNetworkManager : NetworkManagerProtocol {
         }.resume()
     }
     
-    func fetchOneCallLocationWeather(lat: String, lon: String, completion: @escaping (OneCall) -> ()) {
-        let API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely,alerts,current,daily&appid=\(NetworkProperties.API_KEY)"
+    func fetchOneCallLocationWeather(completion: @escaping (OneCall) -> ()) {
+        let API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=minutely,alerts,daily&appid=\(NetworkProperties.API_KEY)"
         
         guard let url = URL(string: API_URL) else {
             fatalError()

@@ -8,6 +8,6 @@
 
 protocol NetworkManagerProtocol {
     func fetchCurrentWeather(city: String, completion: @escaping (WeatherModel) -> ())
-    func fetchOneCallLocationWeather(lat: String, lon: String, completion: @escaping (OneCall) -> ())
+    func fetchOneCallLocationWeather(completion: @escaping (OneCall) -> ())
     func fetchNextFiveWeatherForecast(city: String, state: String, completion: @escaping ([ForecastTemperature]) -> ())
 }

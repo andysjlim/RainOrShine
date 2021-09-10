@@ -9,6 +9,7 @@
 import UIKit
 
 extension Date {
+    
     static func getTodaysDate() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -41,5 +42,11 @@ extension Date {
         }
         
         return "error"
+    }
+    
+    static func dayNameOfWeek() -> String? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: Date())
     }
 }

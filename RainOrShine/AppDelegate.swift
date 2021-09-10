@@ -12,9 +12,13 @@ import UserNotifications
 import BackgroundTasks
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
+    var locationManager : CLLocationManager!
+    var currentLocation: CLLocation?
+    var weather : OneCall?
+    let onlyOneIdentifier: String = "com.example.apicall"
     
     func requestAuthForLocalNotifications() {
         notificationCenter.delegate = self
@@ -26,23 +30,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
         }
     }
+    
+    override init() {
+        super.init()
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: onlyOneIdentifier,
+                                                using: nil) { task in
+                    self.handleAppRefresh(task: task as! BGAppRefreshTask)
+            print("Will you call this one day?")
+                }
+        print("App: BackgroundTask registered.")
+        self.requestAuthForLocalNotifications()
+        self.getLocation()
+        print("What is this gets called?")
+    }
+    
+    func getLocation() {
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        debugPrint(error.localizedDescription)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            self.currentLocation = location
+            
+            let latitude: Double = self.currentLocation!.coordinate.latitude
+            let longitude: Double = self.currentLocation!.coordinate.longitude
+            
+            WeatherNetworkManager.shared.setLatitude(latitude)
+            WeatherNetworkManager.shared.setLongitude(longitude)
+            
+            WeatherNetworkManager.shared.fetchOneCallLocationWeather(completion: { (currentWeather) in
+                self.weather = currentWeather
+                
+                self.weather?.sortHourlyArray()
+                print(currentWeather)
+                print("oh wow!")
+                self.scheduleLocalNotification()
+            })
+            
+            /*
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
+                if let placemarks = placemarks {
+                    if placemarks.count > 0 {
+                        let placemark = placemarks[0]
+                        if let city = placemark.locality {
+                            self.city = city
+                        }
+                    }
+                }
+                
+            }
+            */
+        }
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: onlyOneIdentifier, using: nil) { task in
+            debugPrint("REGISTERING TASK!")
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.requestAuthForLocalNotifications()
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.apiCall", using: nil) { task in
-            self.handleAppRefresh(task: task as! BGAppRefreshTask)
-        }
+        self.getLocation()
+        
+        print("Wow")
+        
+//        BGTaskScheduler.shared.register(forTaskWithIdentifier: onlyOneIdentifier, using: nil) { task in
+//            debugPrint("REGISTERING TASK!")
+//            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+//        }
+        
+        print("wow again!")
+        
         return true
     }
     
     func scheduleAppRefresh() {
-        let request = BGAppRefreshTaskRequest(identifier: "com.apiCall")
-        
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 60*60)
+        let request = BGAppRefreshTaskRequest(identifier: onlyOneIdentifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 60)
         
         do {
             try BGTaskScheduler.shared.submit(request)
+            print("Submitted!")
         } catch {
             print("Could not schedule app refresh: \(error)")
         }
@@ -51,24 +136,94 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func handleAppRefresh(task: BGAppRefreshTask) {
         scheduleAppRefresh()
         
-        scheduleLocalNotification()
+        let refreshQueue = OperationQueue()
+        refreshQueue.qualityOfService = .background
+        refreshQueue.maxConcurrentOperationCount = 1
+        
+        let refreshOperation = BlockOperation {
+            
+            OperationQueue.main.addOperation {
+                self.scheduleLocalNotification()
+            }
+        }
+        
+        refreshOperation.completionBlock = { task.setTaskCompleted(success: true)}
         
         task.expirationHandler = {
-            task.setTaskCompleted(success: false)
+            refreshQueue.cancelAllOperations()
+            task.setTaskCompleted(success: true)
         }
     }
     
     func scheduleLocalNotification() {
+        var scheduledDayCD : ScheduledDaysCD?
+        
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        {
+            if let savedSchedulesFromCoreData = try? context.fetch(ScheduledDaysCD.fetchRequest()){
+                if let scheduledDays = savedSchedulesFromCoreData as? [ScheduledDaysCD] {
+                    if scheduledDays.count != 0 {
+                        scheduledDayCD = scheduledDays[0]
+                    }
+                }
+            }
+        }
+        
+        var goThrough = false
+        
+        var day = ""
+        day = Date.dayNameOfWeek()!
+        
+        print(day)
+        
+        if let scheduledDayCD = scheduledDayCD as ScheduledDaysCD? {
+            switch day {
+            case "Monday":
+                goThrough = scheduledDayCD.mondayEnabled
+            case "Tuesday":
+                goThrough = scheduledDayCD.tuesdayEnabled
+            case "Wednesday":
+                goThrough = scheduledDayCD.wednesdayEnabled
+            case "Thursday":
+                goThrough = scheduledDayCD.thursdayEnabled
+            case "Friday":
+                goThrough = scheduledDayCD.fridayEnabled
+            case "Saturday":
+                goThrough = scheduledDayCD.saturdayEnabled
+            case "Sunday":
+                goThrough = scheduledDayCD.sundayEnabled
+            default:
+                goThrough = false
+            }
+        }
+        
+        if !goThrough { return }
+        
+        WeatherNetworkManager.shared.fetchOneCallLocationWeather(completion: { (currentWeather) in
+            self.weather = currentWeather
+            
+            self.weather?.sortHourlyArray()
+        })
+        
+        
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             if settings.authorizationStatus == UNAuthorizationStatus.authorized {
                 let content = UNMutableNotificationContent()
-                content.title = "It will rain!"
-                content.body = "Bring yo umbrella!"
+                if((self.weather?.hourly[0].weather[0].id)! < 600)
+                {
+                    content.title = "It will rain!"
+                }
+                else
+                {
+                    content.title = "It will not rain!"
+                }
+                
+                content.body = (self.weather?.hourly[0].weather[0].description)!
                 content.sound = UNNotificationSound.default
                 
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
                 
-                let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: day, content: content, trigger: trigger)
                 
                 let notificationCenter = UNUserNotificationCenter.current()
                 
@@ -82,10 +237,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print("User hasn't allowed notificatino settings")
             }
         }
-    }
-    
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        //WeatherNetworkManager.
     }
 
     // MARK: UISceneSession Lifecycle
